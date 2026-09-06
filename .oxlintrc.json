@@ -1,0 +1,49 @@
+{
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"plugins": ["typescript", "unicorn", "import"],
+	"categories": {
+		"correctness": "error"
+	},
+	"env": {
+		"browser": true,
+		"es2021": true,
+		"node": true
+	},
+	"ignorePatterns": ["dist", "build", "node_modules", "coverage", "*.config.js"],
+	"rules": {
+		"no-unused-vars": "off",
+		"no-shadow": "off",
+		"typescript/no-unused-vars": [
+			"error",
+			{
+				"argsIgnorePattern": "^_"
+			}
+		],
+		"typescript/no-explicit-any": "error",
+		"typescript/no-shadow": "error",
+		"max-lines": [
+			"error",
+			{
+				"max": 300,
+				"skipBlankLines": true,
+				"skipComments": true
+			}
+		],
+		"max-lines-per-function": [
+			"warn",
+			{
+				"max": 60
+			}
+		],
+		"max-params": ["warn", 4],
+		"max-depth": ["warn", 3],
+		"complexity": ["warn", 10],
+		"no-var": "error",
+		"prefer-const": "error",
+		"eqeqeq": ["error", "always"],
+		"no-console": "warn",
+		"no-debugger": "error",
+		"no-duplicate-imports": "error",
+		"consistent-return": "warn"
+	}
+}
