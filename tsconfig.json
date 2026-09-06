@@ -16,11 +16,13 @@
 		"outDir": "./dist",
 		"rootDir": "./src",
 		"paths": {
-			"@config/*": ["./src/config/*"]
+			"@config/*": ["./src/config/*"],
+			"@shared/*": ["./src/shared/*"]
 		},
 		"skipLibCheck": true,
 		"strict": true,
 		"strictPropertyInitialization": false
 	},
-	"include": ["src"]
+	"include": ["src"],
+	"exclude": ["node_modules", "dist", "test", "**/*spec.ts"]
 }
