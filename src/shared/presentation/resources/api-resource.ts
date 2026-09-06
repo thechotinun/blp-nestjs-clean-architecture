@@ -7,19 +7,23 @@ interface PaginatedData {
 	meta: IPaginationMeta;
 }
 
+function isPaginatedData(data: unknown): data is PaginatedData {
+	return typeof data === 'object' && data !== null && 'items' in data;
+}
+
 export class ApiResource {
 	/**
 	 * Success response
 	 * @param [data]
 	 * @returns SuccessResponseInterface
 	 */
-	static successResponse(data?: Record<string, unknown>): SuccessResponseInterface {
+	static successResponse(data?: unknown): SuccessResponseInterface {
 		if (!data) {
 			return { status: { code: HttpStatus.OK, message: 'OK' } };
 		}
 
-		if ('items' in data) {
-			const { items, links, meta } = data as unknown as PaginatedData;
+		if (isPaginatedData(data)) {
+			const { items, links, meta } = data;
 
 			return {
 				data: items,
@@ -29,7 +33,10 @@ export class ApiResource {
 			};
 		}
 
-		return { data, status: { code: HttpStatus.OK, message: 'OK' } };
+		return {
+			data: data as Record<string, unknown> | unknown[],
+			status: { code: HttpStatus.OK, message: 'OK' },
+		};
 	}
 
 	/**

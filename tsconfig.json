@@ -17,7 +17,8 @@
 		"rootDir": "./src",
 		"paths": {
 			"@config/*": ["./src/config/*"],
-			"@shared/*": ["./src/shared/*"]
+			"@shared/*": ["./src/shared/*"],
+			"@modules/*": ["./src/modules/*"]
 		},
 		"skipLibCheck": true,
 		"strict": true,

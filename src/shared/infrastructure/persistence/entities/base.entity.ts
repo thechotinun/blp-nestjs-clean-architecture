@@ -13,13 +13,13 @@ export class BaseEntity {
 	@CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
 	createdDate: Date;
 
-	@Column({ type: 'uuid' })
+	@Column({ type: 'uuid', nullable: true })
 	createdBy?: string;
 
 	@UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
 	updatedDate: Date;
 
-	@Column({ type: 'uuid' })
+	@Column({ type: 'uuid', nullable: true })
 	updatedBy?: string;
 
 	@Column({
